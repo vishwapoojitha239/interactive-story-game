@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Story Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- LOGIN PAGE -->
+    <div id="login-page" class="page">
+        <h1>Welcome to the Interactive Story Game</h1>
+        <div class="login-form">
+            <form id="login-form">
+                <input type="email" id="email" placeholder="Enter Email" required>
+                <input type="password" id="password" placeholder="Enter Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+        <p id="error-message" style="color: red; display: none;"></p>
+    </div>
+
+    <!-- GENRE SELECTION PAGE -->
+    <div id="genre-selection" class="page" style="display:none;">
+        <h1>Choose Your Story Genre</h1>
+        <div class="genre-buttons">
+        <button onclick="startStory('comedy')">Comedy</button>
+        <button onclick="startStory('romance')">Romance</button>
+        <button onclick="startStory('adventure')">Adventure</button>
+        <button onclick="startStory('mystery')">Mystery</button>
+        <button onclick="startStory('sci-fi')">Sci-Fi</button>
+        <button onclick="startStory('fantasy')">Fantasy</button>
+        <button onclick="startStory('horror')">Horror</button>
+    </div>
+    
+    </div>
+
+    <!-- STORY PAGE -->
+    <div id="story-page" class="page" style="display:none;">
+        <div id="story-text">
+            <h1>Story Begins</h1>
+            <p id="story-description">Welcome to the story! Choose wisely!</p>
+        </div>
+        <div id="choices">
+            <button class="choice-button" style="display:none;">Option 1</button>
+            <button class="choice-button" style="display:none;">Option 2</button>
+            <button class="choice-button" style="display:none;">Option 3</button>
+            <button class="choice-button" style="display:none;">Option 4</button>
+            <button class="choice-button" style="display:none;">Option 5</button>
+        </div>
+    </div>
+
+    <!-- END PAGE -->
+    <div id="end-page" class="page" style="display:none;">
+        <h1>Thank you for playing!</h1>
+        <p>You have completed the story. Here's your path:</p>
+        <div id="full-story-path" style="max-width: 800px; margin-top: 20px; text-align: left; background: rgba(0,0,0,0.6); padding: 20px; border-radius: 10px;"></div>
+        <button onclick="resetGame()">Start Over</button>
+        <button onclick="goToGenreSelection()">Choose a Different Genre</button>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        function validateLogin(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            const passwordMinLength = 8;
+
+            // Clear previous error message
+            errorMessage.style.display = "none";
+
+            // Email validation
+            if (!emailRegex.test(email)) {
+                errorMessage.textContent = "Please enter a valid email address.";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            // Password strength validation
+            if (password.length < passwordMinLength) {
+                errorMessage.textContent = `Password must be at least ${passwordMinLength} characters long.`;
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            // If validation passes, proceed with login
+            goToGenreSelection();
+        }
+
+        // Go to genre selection page
+        function goToGenreSelection() {
+            // Hide login page and show genre selection
+            document.getElementById('login-page').style.display = "none";
+            document.getElementById('genre-selection').style.display = "block";
+        }
+
+        // Attach validateLogin to form submission
+        document.getElementById('login-form').addEventListener('submit', validateLogin);
+    </script>
+</body>
+</html>

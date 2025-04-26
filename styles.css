@@ -1,0 +1,111 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+/* Page styles with background images */
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background 0.5s ease-in-out;
+}
+
+/* Background images */
+#login-page {
+    background-image: url('https://wallpapercave.com/wp/wp11893830.jpg');
+}
+
+#genre-selection {
+    background-image: url('https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260');
+}
+
+#story-page {
+    background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=80');
+}
+
+#end-page {
+    background-image: url('https://preview.redd.it/5qz0nzspaq481.png?width=640&crop=smart&auto=webp&s=1cb5a272e4de89aac46db10b580c831aa03ece4e');
+}
+
+/* Login form styles */
+h1 {
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+input, button {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Genre Selection buttons */
+.genre-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.genre-buttons button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #007BFF;
+    transition: background-color 0.3s;
+}
+
+.genre-buttons button:hover {
+    background-color: #0056b3;
+}
+
+/* Story page styles */
+#choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.choice-button {
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #28a745;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 300px;
+}
+
+.choice-button:hover {
+    background-color: #218838;
+}
+
+/* End page styles */
+#end-page button {
+    width: 200px;
+    margin: 10px;
+}
